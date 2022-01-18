@@ -25,7 +25,7 @@ def main():
     driver.find_element(By.ID, "signInSubmit").click()
 
     driver.get("https://www.amazon.it/dp/B08KKJ37F7")
-    driver.implicitly_wait(1)   # to refresh every second
+    driver.implicitly_wait(2)   # to refresh every 2 seconds
     while(True):
         if len(driver.find_elements(By.ID, "buy-now-button")) > 0:
             driver.implicitly_wait(10)

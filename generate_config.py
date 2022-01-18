@@ -3,7 +3,8 @@ import json
 credentials = {
     "amazon" : {
         "email" : "user@domain.com",
-        "pass" : "password"
+        "pass" : "password",
+        "method" : 1
     },
     "credit_card" : {
         "number" : "1234567890",

@@ -5,16 +5,16 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common import action_chains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.chrome.webdriver import WebDriver
 
 def main():
     config = dict()
     with open("config.json", 'r') as infile:
         config = json.load(infile)
 
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     driver.implicitly_wait(10)
-    driver.get("https://www.amazon.it")
+    driver.get("https://www.amazon.it/dp/B08KKJ37F7")
     driver.find_element(By.ID, "sp-cc-accept").click()   # accept cookies
 
     # login
@@ -24,7 +24,6 @@ def main():
     driver.find_element(By.ID, "ap_password").send_keys(config["amazon"]["pass"])
     driver.find_element(By.ID, "signInSubmit").click()
 
-    driver.get("https://www.amazon.it/dp/B08KKJ37F7")
     driver.implicitly_wait(2)   # to refresh every 2 seconds
     while(True):
         if len(driver.find_elements(By.ID, "buy-now-button")) > 0:
